@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo | Hello World</title>
+    <style>
+        /* #box{
+
+            background-color: red;
+        } */
+        /* Any demo specific styling needed for this tutorial only */
+
+        .box {
+            position: absolute;
+            height: 200px;
+            width: 200px;
+        	background-color: #ddd;
+        	border: 1px #eee;
+        	padding: 5px;
+        }
+        .innerBox {
+            margin: 5%;
+        	padding: 5px;
+        	background-color: white;
+        }
+        
+        #container {
+            position: relative;
+            padding: 10px;
+            height: 300px;
+            width: 450px;
+        }
+        
+        .contentBox {
+        	background-color: white;
+            position: absolute;
+            width: 200px;
+        	border: solid 1px #99c;
+        	margin: 5px;
+        
+            -moz-box-shadow: 10px 10px 5px #888;
+            -webkit-box-shadow: 2px 3px 5px #888;
+            box-shadow: 10px 10px 5px #888;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel soluta atque sit, in doloribus facilis veritatis consequuntur reprehenderit, minima porro nemo! Odit natus minus explicabo repellendus animi iste in consequatur.</p>
+    </div> -->
+
+    <button id="startButton">Grow Borders</button>
+    <button id="reverseButton">Shrink Borders</button>
+
+    <div id="anim8target" class="box" style="border-style:outset">
+        <div class="innerBox">A box</div>
+    </div>
+
+    <!-- load Dojo -->
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+            data-dojo-config="async: true"></script> 
+    <script>
+        // require([
+        //     'dojo/dom',
+        //     'dojo/fx',
+        //     'dojo/domReady!'
+        // ], function(dom, fx){
+        //     fx.wipeOut({
+        //         node: dom.byId('box')
+        //     }).play();
+        // });
+        require(["dojo/_base/fx", "dojo/on", "dojo/dom", "dojo/domReady!"], function(baseFx, on, dom) {
+            var startButton = dom.byId("startButton"),
+				reverseButton = dom.byId("reverseButton"),
+				anim8target = dom.byId("anim8target");
+            on(startButton, "click", (evt)=>{
+                baseFx.animateProperty({
+                    node: anim8target,
+                    properties: {
+                        borderWidth: 100
+                    }
+                }).play()
+            })
+            on(reverseButton, "click", (evt)=>{
+                baseFx.animateProperty({
+                    node: anim8target,
+                    properties: {
+                        borderWidth: 1
+                    }
+                }).play()
+            })
+        });
+    </script>   
+</body>
+</html>

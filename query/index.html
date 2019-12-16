@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Query</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .blue{
+            color: blue;
+        }
+        .green{
+            color: green;
+        }
+        .italics{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+    data-dojo-config="async: true">
+    </script>
+    <!-- <ul id="list">
+        <li class="odd">
+            <div class="bold">
+                <a class="odd">Odd</a>
+            </div>
+        </li>
+        <li class="even">
+            <div class="italic">
+                <a class="even">Even</a>
+            </div>
+        </li>
+        <li class="odd">
+            <a class="odd">Odd</a>
+        </li>
+        <li class="even">
+            <div class="bold">
+                <a class="even">Even</a>
+            </div>
+        </li>
+        <li class="odd">
+            <div class="italic">
+                <a class="odd">Odd</a>
+            </div>
+        </li>
+        <li class="even">
+            <a class="even">Even</a>
+        </li>
+    </ul>
+    
+    <ul id="list2">
+        <li class="odd">Odd</li>
+    </ul> -->
+
+    <div id="list">
+        <div class="odd">One</div>
+        <div class="even">Two</div>
+        <div class="odd">Three</div>
+        <div class="even">Four</div>
+        <div class="odd">Five</div>
+        <div class="even">Six</div>
+    </div>
+
+    <script>
+        // Wait for the DOM to be ready before working with it
+        require(["dojo/query", "dojo/dom-class", "dojo/NodeList-dom", "dojo/domReady!"],
+            function(query, domClass) {
+                setTimeout(() => {
+                    query(".odd").forEach(function(node, index, nodelist){
+                        // for each node in the array returned by query,
+                        // execute the following code
+                        console.log(node, index, nodelist);
+                        console.log(node);
+                        domClass.add(node,index == 0?"green":"red");
+                    });
+                    // query(".even").addClass("blue");
+                    query(".even").style("color","blue").addClass("italics");
+                    // query(".even").forEach(function(node, index, nodelist){
+                    //     // for each node in the array returned by query,
+                    //     // execute the following code
+                    //     console.log(node, index, nodelist);
+                    //     console.log(node);
+                    //     domClass.add(node, "blue");
+                    // });
+                }, 2000);
+            
+        });
+    </script>
+</body>
+</html>

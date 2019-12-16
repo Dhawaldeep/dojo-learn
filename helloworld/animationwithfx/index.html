@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo | Hello World</title>
+</head>
+<body>
+    <h1 id="greeting">Hello</h1>
+
+    <!-- load Dojo -->
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+            data-dojo-config="async: true"></script> 
+    <script>
+        require([
+            'dojo/dom',
+            'dojo/fx',
+            'dojo/domReady'
+        ], function(dom, fx){
+            var greetingNode = dom.byId('greeting');
+            greetingNode.innerHTML += ' from Dojo!';
+
+            setTimeout(() => {
+                fx.slideTo({
+                    node: greetingNode,
+                    top: 200,
+                    left: 300
+                }).play();
+                setTimeout(() => {
+                    fx.slideTo({
+                        node: greetingNode,
+                        top: 0,
+                        left: 0
+                    }).play();
+                }, 1000);
+            }, 1000);
+        });
+    </script>   
+</body>
+</html>
